@@ -487,6 +487,36 @@ img {
   letter-spacing: 0.1em;
 }
 
+.team-social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.team-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.team-social a:hover {
+  background: var(--gradient-main);
+  color: white;
+  transform: scale(1.15);
+}
+
+.team-social svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* ===== Sessions ===== */
 .latest-sessions {
   padding: 120px 0;
