@@ -144,21 +144,67 @@
 
     if (allContainer) {
       allContainer.innerHTML = '';
-      videos.forEach(v => {
-        allContainer.appendChild(createSessionCard(v));
-      });
-    }
+      const BATCH_SIZE = 6;
+      let shown = 0;
+      const sentinel = document.getElementById('loadMoreSentinel');
+      const endMsg = document.getElementById('sessionsEnd');
 
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput && allContainer) {
-      searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
-        allContainer.querySelectorAll('.session-card').forEach(card => {
-          const title = card.getAttribute('data-title') || '';
-          card.style.display = title.includes(query) ? '' : 'none';
+      function showNextBatch() {
+        const batch = videos.slice(shown, shown + BATCH_SIZE);
+        batch.forEach(v => {
+          allContainer.appendChild(createSessionCard(v));
         });
-      });
+        shown += batch.length;
+
+        if (shown >= videos.length) {
+          if (sentinel) sentinel.style.display = 'none';
+          if (endMsg) endMsg.style.display = 'block';
+        }
+      }
+
+      showNextBatch();
+
+      if (shown < videos.length && sentinel) {
+        sentinel.style.display = 'block';
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && shown < videos.length) {
+            showNextBatch();
+            if (shown >= videos.length) {
+              observer.disconnect();
+            }
+          }
+        }, { rootMargin: '200px' });
+        observer.observe(sentinel);
+      } else if (shown >= videos.length && endMsg) {
+        endMsg.style.display = 'block';
+      }
+
+      // Search functionality — search across ALL videos, not just shown ones
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const query = searchInput.value.toLowerCase().trim();
+          if (query) {
+            // Show all matching videos at once when searching
+            allContainer.innerHTML = '';
+            videos.forEach(v => {
+              if (v.title.toLowerCase().includes(query)) {
+                allContainer.appendChild(createSessionCard(v));
+              }
+            });
+            if (sentinel) sentinel.style.display = 'none';
+            if (endMsg) endMsg.style.display = 'none';
+          } else {
+            // Reset to paginated view
+            allContainer.innerHTML = '';
+            shown = 0;
+            showNextBatch();
+            if (shown < videos.length && sentinel) {
+              sentinel.style.display = '';
+            }
+          }
+        });
+      }
     }
   }
 

@@ -684,6 +684,19 @@ img {
   margin-top: 48px;
 }
 
+.sessions-load-more,
+.sessions-end {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.sessions-load-more p,
+.sessions-end p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
 .sessions-fallback {
   text-align: center;
   padding: 60px 24px;
