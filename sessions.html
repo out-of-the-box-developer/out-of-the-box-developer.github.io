@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessions — Out of the Box Developer</title>
+  <meta name="description" content="Browse all episodes of the Out of the Box Developer podcast. Live sessions on YouTube covering software development, career growth, and more.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-solid" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">&#9654;</span>
+        <span>OOTB<span class="logo-accent">Dev</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="sessions.html" class="nav-link active">Sessions</a>
+        <a href="https://www.youtube.com/@outoftheboxdev" target="_blank" rel="noopener" class="nav-link nav-link-external">YouTube</a>
+        <a href="https://www.linkedin.com/company/ootbd/" target="_blank" rel="noopener" class="nav-link nav-link-external">LinkedIn</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="sessions-hero">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">All Episodes</span>
+        <h1>Our Sessions</h1>
+        <p class="section-subtitle">Explore all our live podcast sessions. New episodes every other week on YouTube.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="all-sessions">
+    <div class="container">
+      <div class="sessions-filter">
+        <input type="text" id="searchInput" placeholder="Search sessions..." class="search-input" aria-label="Search sessions">
+      </div>
+      <div class="sessions-grid sessions-grid-full" id="allSessions">
+        <div class="loading-placeholder">
+          <div class="spinner"></div>
+          <p>Loading sessions from YouTube...</p>
+        </div>
+      </div>
+      <div class="sessions-load-more" id="loadMoreSentinel" style="display:none;">
+        <div class="spinner"></div>
+        <p>Loading more sessions...</p>
+      </div>
+      <div class="sessions-end" id="sessionsEnd" style="display:none;">
+        <p>You've seen all loaded sessions!</p>
+        <a href="https://www.youtube.com/@outoftheboxdev/streams" target="_blank" rel="noopener" class="btn btn-secondary">View more on YouTube</a>
+      </div>
+      <div class="sessions-fallback" id="sessionsFallback" style="display:none;">
+        <p>Unable to load sessions automatically. Visit our YouTube channel to see all episodes:</p>
+        <a href="https://www.youtube.com/@outoftheboxdev/streams" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">&#9654;</span>
+          <span>OOTB<span class="logo-accent">Dev</span></span>
+        </div>
+        <p>&copy; 2025 Out of the Box Developer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
