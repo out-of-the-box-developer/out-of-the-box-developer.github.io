@@ -201,6 +201,8 @@ img {
 
 .hero-logo {
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-logo img {
