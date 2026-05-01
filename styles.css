@@ -199,6 +199,22 @@ img {
   padding: 120px 24px 80px;
 }
 
+.hero-logo {
+  margin-bottom: 24px;
+}
+
+.hero-logo img {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.25)) drop-shadow(0 0 60px rgba(0,25,255,0.3));
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 .hero-tag {
   display: inline-block;
   font-size: 0.85rem;
